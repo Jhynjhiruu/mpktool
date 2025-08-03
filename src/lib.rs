@@ -336,7 +336,7 @@ pub fn extract(file: &[u8]) -> BinResult<Vec<(Note, Vec<&[u8]>)>> {
     let notes = tab
         .notes
         .into_iter()
-        .filter(|n| n.status == 0x02)
+        .filter(|n| n.status & 0x02 != 0)
         .collect::<Vec<_>>();
 
     for note in notes {
